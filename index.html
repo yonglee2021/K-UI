@@ -22,7 +22,6 @@
         ::-webkit-scrollbar-thumb:hover { background: rgba(107, 114, 128, 0.8); }
         input:focus, select:focus, textarea:focus { outline: none; box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.4); }
 
-        /* ================= 探针前台大盘核心样式 ================= */
         .probe-body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #f4f5f7; color: #333; margin: 0; padding: 20px; transition: all 0.3s; min-height: 100vh;}
         .probe-container { max-width: 1200px; margin: 0 auto; }
         .probe-global-stats { display: flex; flex-wrap: wrap; gap: 20px; justify-content: space-around; background: white; padding: 20px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.03); margin-bottom: 30px; text-align: center; }
@@ -51,13 +50,11 @@
         .probe-stat-bar-full > div { height: 100%; border-radius: 3px; transition: width 0.3s; }
         .probe-stat-subtext { font-size: 11px; color: #6b7280; margin-top: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
-        /* Table View */
         .probe-custom-table { width: 100%; border-collapse: collapse; text-align: left; font-size: 13px; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
         .probe-custom-table th { background: #f8fafc; padding: 14px 16px; color: #64748b; font-weight: 600; border-bottom: 1px solid #e2e8f0; white-space: nowrap; }
         .probe-custom-table td { padding: 12px 16px; border-bottom: 1px solid #f1f5f9; vertical-align: middle; }
         .probe-custom-table tr:hover { background: #f8fafc; cursor: pointer;}
         
-        /* Toggle & Filter */
         .probe-view-controls { display: flex; gap: 8px; background: rgba(0,0,0,0.05); padding: 4px; border-radius: 8px; }
         .probe-toggle-btn { display: flex; align-items: center; gap: 6px; padding: 6px 14px; border: none; background: transparent; cursor: pointer; border-radius: 6px; font-size: 13px; font-weight: 600; color: #64748b; transition: all 0.2s; }
         .probe-toggle-btn.active { background: white; color: #3b82f6; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
@@ -65,11 +62,9 @@
         .probe-filter-tag { display: inline-flex; align-items: center; gap: 5px; background: white; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; color: #475569; box-shadow: 0 1px 3px rgba(0,0,0,0.05); cursor:pointer; border: 1px solid transparent;}
         .probe-filter-tag.active { background: #3b82f6; color: white; }
 
-        /* Map */
         #probe-map-container { width: 100%; height: 500px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); overflow: hidden; border: 1px solid #e5e7eb; background-color: #b1c2d4; background-image: linear-gradient(rgba(255,255,255,0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.2) 1px, transparent 1px); background-size: 20px 20px; z-index: 1;}
         .probe-custom-map-badge div { background-color: #10b981; color: white; border-radius: 50%; width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: bold; border: 2px solid white; box-shadow: 0 2px 6px rgba(0,0,0,0.4); }
 
-        /* Detail View */
         .probe-header-card { background: white; padding: 24px; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); margin-bottom: 20px; }
         .probe-info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; font-size: 14px; }
         .probe-charts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 20px; }
@@ -78,7 +73,6 @@
         .probe-chart-full { grid-column: 1 / -1; }
         .probe-chart-full canvas { max-height: 250px !important; }
 
-        /* 主题支持 */
         .theme2 { background-color: #0d1117; color: #c9d1d9; }
         .theme2 .probe-vps-card, .theme2 .probe-global-stats, .theme2 .probe-header-card, .theme2 .probe-chart-card { background: #161b22; color: #c9d1d9; box-shadow: 0 4px 6px rgba(0,0,0,0.4); border: 1px solid #30363d; }
         .theme2 .probe-vps-card:hover { border-color: #8b949e; }
@@ -130,7 +124,7 @@
         .theme5 #probe-map-container { background-color: #0d1117; border-color: #30363d; background-image: linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px); }
     </style>
 </head>
-<body id="main-body">
+<body>
     
     <div id="app" v-cloak>
         <div v-if="!isLoggedIn || activeTab === 'probe'" class="probe-body" :class="probeSys.theme">
@@ -311,7 +305,6 @@
             </div>
         </div>
 
-
         <div v-if="isLoggedIn && activeTab !== 'probe'" class="max-w-6xl mx-auto space-y-8 animate-fade-in p-4 md:p-8">
             
             <div class="bg-white/70 backdrop-blur-xl border border-white/80 p-4 md:px-6 rounded-[2rem] shadow-xl shadow-slate-200/50 flex flex-col lg:flex-row justify-between items-center sticky top-4 z-50 gap-4">
@@ -464,7 +457,6 @@
 
             <div v-if="activeTab === 'settings'" class="space-y-6">
                 <template v-if="role === 'admin'">
-                    
                     <div class="bg-white/60 backdrop-blur-xl p-8 rounded-[2.5rem] border border-white shadow-xl shadow-slate-200/40">
                         <h3 class="text-xl font-black text-slate-800 mb-6 flex items-center gap-2">⚙️ KUI 代理系统参数</h3>
                         <div class="max-w-md mb-6">
@@ -503,6 +495,28 @@
                         </div>
                         <button @click="saveProbeSettings" class="mt-6 bg-blue-600 text-white px-8 py-3 rounded-2xl font-bold hover:bg-blue-700 transition-all shadow-md">💾 立即生效配置</button>
                     </div>
+
+                    <div class="bg-white/60 backdrop-blur-xl p-8 rounded-[2.5rem] border border-white shadow-xl shadow-slate-200/40">
+                        <h3 class="text-xl font-black text-slate-800 mb-2 flex items-center gap-2">💻 探针服务端管理</h3>
+                        <p class="text-sm text-slate-500 mb-6 font-medium">提示：探针大盘已与 KUI Agent 深度统一！您在“服务器与节点”页面接入的机器会<b>自动</b>出现在此处。在这里只需维护展示信息即可，无需再次安装脚本。</p>
+
+                        <div class="overflow-x-auto bg-white rounded-2xl border border-slate-100 shadow-sm">
+                            <table class="w-full text-left border-collapse text-sm">
+                                <thead><tr class="bg-slate-50 text-slate-500 font-bold border-b border-slate-100"><th class="p-4">节点名称</th><th class="p-4">分组</th><th class="p-4">状态</th><th class="p-4">操作</th></tr></thead>
+                                <tbody>
+                                    <tr v-if="adminProbeServers.length===0"><td colspan="4" class="p-6 text-center text-slate-400">暂无探针，请在上方添加</td></tr>
+                                    <tr v-for="s in adminProbeServers" :key="s.id" class="border-b border-slate-50 hover:bg-slate-50">
+                                        <td class="p-4 font-bold text-slate-700">{{ s.name }} <span v-if="s.is_hidden==='true'" class="text-[10px] bg-slate-200 text-slate-600 px-2 py-0.5 rounded">隐藏</span></td>
+                                        <td class="p-4">{{ s.server_group || '默认分组' }}</td>
+                                        <td class="p-4"><span v-if="isOnline(s.last_updated)" class="text-emerald-500 font-bold">● 在线</span><span v-else class="text-rose-500 font-bold">● 离线</span></td>
+                                        <td class="p-4 flex gap-2">
+                                            <button @click="openProbeEditModal(s)" class="bg-blue-50 text-blue-600 hover:bg-blue-100 px-3 py-1.5 rounded-lg font-bold transition">编辑展示信息</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </template>
 
                 <template v-if="role === 'user'">
@@ -523,6 +537,26 @@
             
         </div>
         
+        <div v-if="probeEditModalOpen" class="fixed inset-0 z-[200] bg-black/40 backdrop-blur-sm flex items-center justify-center p-4">
+            <div class="bg-white rounded-3xl p-8 shadow-2xl w-full max-w-lg relative max-h-[90vh] overflow-y-auto">
+                <button @click="probeEditModalOpen = false" class="absolute top-4 right-5 text-2xl text-slate-400 hover:text-slate-600">&times;</button>
+                <h3 class="text-xl font-black text-slate-800 mb-6 flex items-center gap-2">✏️ 编辑探针展示信息</h3>
+                <div class="space-y-4">
+                    <div><label class="block text-xs font-bold text-slate-500 mb-1">展示别名</label><input v-model="editingProbeNode.name" class="w-full border p-2.5 rounded-xl text-sm font-medium text-slate-700"></div>
+                    <div><label class="block text-xs font-bold text-slate-500 mb-1">前台可见性</label><select v-model="editingProbeNode.is_hidden" class="w-full border p-2.5 rounded-xl text-sm font-medium text-slate-700"><option value="false">显示 (默认)</option><option value="true">隐藏 (不在前台大盘展示)</option></select></div>
+                    <div><label class="block text-xs font-bold text-slate-500 mb-1">分组名称</label><input v-model="editingProbeNode.server_group" class="w-full border p-2.5 rounded-xl text-sm font-medium text-slate-700"></div>
+                    <div><label class="block text-xs font-bold text-slate-500 mb-1">价格</label><input v-model="editingProbeNode.price" class="w-full border p-2.5 rounded-xl text-sm font-medium text-slate-700"></div>
+                    <div><label class="block text-xs font-bold text-slate-500 mb-1">到期时间</label><input type="date" v-model="editingProbeNode.expire_date" class="w-full border p-2.5 rounded-xl text-sm font-medium text-slate-700"></div>
+                    <div><label class="block text-xs font-bold text-slate-500 mb-1">带宽 (徽章)</label><input v-model="editingProbeNode.bandwidth" placeholder="如: 1Gbps" class="w-full border p-2.5 rounded-xl text-sm font-medium text-slate-700"></div>
+                    <div><label class="block text-xs font-bold text-slate-500 mb-1">流量总量 (徽章)</label><input v-model="editingProbeNode.traffic_limit" placeholder="如: 1TB/月" class="w-full border p-2.5 rounded-xl text-sm font-medium text-slate-700"></div>
+                </div>
+                <div class="mt-8 flex justify-end gap-3">
+                    <button @click="probeEditModalOpen = false" class="px-5 py-2.5 rounded-xl bg-slate-100 text-slate-600 font-bold hover:bg-slate-200 transition">取消</button>
+                    <button @click="saveProbeEdit" class="px-5 py-2.5 rounded-xl bg-blue-600 text-white font-bold hover:bg-blue-700 shadow-md transition">保存更改</button>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <script>
@@ -547,7 +581,10 @@
                 const servers = ref([]); const nodes = ref([]); const users = ref([]);
                 const newVps = ref({ name: '', ip: '', os: 'debian' }); const newNodeParams = reactive({}); const newUser = reactive({ username: '', password: '', traffic_limit_gb: '', expire_date: '' });
                 const mySubToken = ref(''); const siteTitle = ref(''); const siteTitleInput = ref(''); const userNewPassword = ref('');
-                const batchStartPort = reactive({}); const batchUser = reactive({}); const deployOsMap = reactive(JSON.parse(localStorage.getItem('kui_deploy_os') || '{}'));
+                const batchStartPort = reactive({}); const batchUser = reactive({}); 
+                
+                let initOsMap = {}; try { initOsMap = JSON.parse(localStorage.getItem('kui_deploy_os') || '{}'); } catch(e) {}
+                const deployOsMap = reactive(initOsMap);
 
                 const probeSys = reactive({ theme: 'theme1', is_public: 'true', site_title: 'Server Monitor Pro', custom_bg: '', custom_css: '' });
                 const publicProbeServers = ref([]);
@@ -555,12 +592,12 @@
                 const probeDetailId = ref(null); const probeDetail = ref({});
                 let probeCharts = {};
 
-                const adminProbeServers = ref([]); const probeSecret = ref('admin');
+                const adminProbeServers = ref([]);
+                const probeEditModalOpen = ref(false); const editingProbeNode = ref({});
 
                 watch(activeTab, (val) => localStorage.setItem('monitor_preferred_tab', val));
                 watch(probeView, (val) => localStorage.setItem('monitor_preferred_view', val));
 
-                // 🌟 解决白屏核心：动态向 head 注入 style 标签，彻底避免 Vue 模板编译错误
                 const updateCustomStyles = () => {
                     let styleTag = document.getElementById('kui-custom-styles');
                     if (!styleTag) { styleTag = document.createElement('style'); styleTag.id = 'kui-custom-styles'; document.head.appendChild(styleTag); }
@@ -703,6 +740,12 @@
                             if(!deployOsMap[s.ip]) deployOsMap[s.ip] = 'debian'; if(!batchStartPort[s.ip]) batchStartPort[s.ip] = ''; if(!batchUser[s.ip]) batchUser[s.ip] = 'admin';
                         });
                         if (activeTab.value === 'nodes') renderKUICharts();
+                        
+                        if (activeTab.value === 'settings' && role.value === 'admin') {
+                            const probeRes = await fetchApi('/api/probe/admin/data'); const probeData = await probeRes.json();
+                            Object.assign(probeSys, probeData.settings);
+                            adminProbeServers.value = probeData.servers || [];
+                        }
                     } catch(e) {} finally { isFetchingKUI = false; }
                 };
 
@@ -722,7 +765,7 @@
                 const deleteUser = async (username) => { if(confirm('⚠️ 确定删除用户？节点将归还给管理员。')) { await fetchApi(`/api/users?username=${username}`, { method: 'DELETE' }); refreshData(); } };
                 const resetUserTraffic = async (username) => { await fetchApi('/api/users', { method: 'PUT', body: JSON.stringify({ username, reset_traffic: true }) }); refreshData(); };
                 const addVps = async () => { if(!newVps.value.ip || !newVps.value.name) return alert('请输入名称和IP'); deployOsMap[newVps.value.ip] = newVps.value.os; saveOsMap(); await fetchApi('/api/vps', { method: 'POST', body: JSON.stringify({ ip: newVps.value.ip, name: newVps.value.name }) }); newVps.value = { name: '', ip: '', os: 'debian' }; refreshData(); };
-                const deleteVps = async (ip) => { if(confirm('🧨 确定移除该机器？所有数据将被清空！')) { await fetchApi(`/api/vps?ip=${ip}`, { method: 'DELETE' }); refreshData(); } };
+                const deleteVps = async (ip) => { if(confirm('🧨 确定移除该机器？该机器相关的探针数据、节点数据将被完全清空！')) { await fetchApi(`/api/vps?ip=${ip}`, { method: 'DELETE' }); refreshData(); fetchProbeData();} };
 
                 const addNode = async (ip) => {
                     const p = newNodeParams[ip]; if(!p.port) return alert('请填写端口!');
@@ -751,6 +794,7 @@
                 const getNodesByIp = (ip) => nodes.value.filter(n => n.vps_ip === ip).sort((a, b) => a.port - b.port);
                 const getVpsName = (ip) => servers.value.find(s => s.ip === ip)?.name || ip;
                 
+                const saveOsMap = () => { localStorage.setItem('kui_deploy_os', JSON.stringify(deployOsMap)); };
                 const generateCmd = (ip) => { const osType = deployOsMap[ip] || 'debian'; const scriptUrl = "https://raw.githubusercontent.com/a62169722/KUI/main/vps/kui.sh"; if (osType === 'alpine') return `apk update && apk add curl && curl -sL ${scriptUrl} | sh -s -- --api "${currentDomain}" --ip "${ip}" --token "${authKey.value}"`; else return `apt-get update -y && apt-get install -y curl && bash <(curl -sL ${scriptUrl}) --api "${currentDomain}" --ip "${ip}" --token "${authKey.value}"`; };
 
                 const saveSiteTitle = async () => { if(!siteTitleInput.value) return alert('名称不能为空！'); await fetchApi('/api/settings', { method: 'POST', body: JSON.stringify({ site_title: siteTitleInput.value }) }); siteTitle.value = siteTitleInput.value; alert('✅ KUI 聚合面板名称保存成功！'); };
@@ -761,6 +805,8 @@
 
                 // --- 探针后台管理交互 ---
                 const saveProbeSettings = async () => { await fetchApi('/api/probe/admin/settings', { method: 'POST', body: JSON.stringify({settings: probeSys}) }); alert('✅ 探针大盘配置已生效！'); refreshData(); fetchProbeData(); };
+                const openProbeEditModal = (s) => { editingProbeNode.value = JSON.parse(JSON.stringify(s)); if(!editingProbeNode.value.is_hidden) editingProbeNode.value.is_hidden = 'false'; probeEditModalOpen.value = true; };
+                const saveProbeEdit = async () => { await fetchApi('/api/probe/admin/server', { method: 'PUT', body: JSON.stringify(editingProbeNode.value) }); probeEditModalOpen.value = false; refreshData(); fetchProbeData(); };
                 
                 let dataTimer = null; let pingTimer = null; let probeTimer = null;
                 const startPolling = () => { 
@@ -783,10 +829,10 @@
                     getNodesByIp, getVpsName, formatBytes, formatDate, getExpireText, getTrafficPercent, getPingColor, isOnline, generateCmd, generateSubLink, copyCommand, 
                     globalOnline, globalTraffic, globalSpeedIn, globalSpeedOut, deployOsMap, saveOsMap, siteTitle, siteTitleInput, saveSiteTitle, userNewPassword, updateUserPassword, resetMySubLink, generateUUIDForNewUser, batchStartPort, batchUser, deployAllProtocols,
                     probeSys, publicProbeServers, probeView, probeDetailId, probeDetail, setProbeView, openProbeDetail, probeGlobalOnline, probeGlobalOffline, probeGlobalSpeedIn, probeGlobalSpeedOut, probeGlobalNetRx, probeGlobalNetTx, probeGroups, probeCountryStats,
-                    saveProbeSettings, currentDomain
+                    saveProbeSettings, adminProbeServers, probeEditModalOpen, editingProbeNode, openProbeEditModal, saveProbeEdit, currentDomain
                 };
             }
-        }).mount('#main-body');
+        }).mount('#app'); // 核心修复：严禁挂载到 body
     </script>
 </body>
 </html>
